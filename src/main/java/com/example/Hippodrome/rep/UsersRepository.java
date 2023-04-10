@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UsersRepository extends JpaRepository<Users, Long> {
     @Query(value = "\n"+
             "select CASE WHEN COUNT(user) > 0 THEN true ELSE false END\n" +
-            "from user \n" +
-            "WHERE user.nickname=:nickName AND user.password=:password", nativeQuery = true)
+            "from users as u\n" +
+            "WHERE u.nickname=:nickName AND u.password=:password", nativeQuery = true)
     boolean findUsersByNickName(String nickName,String password);
 }

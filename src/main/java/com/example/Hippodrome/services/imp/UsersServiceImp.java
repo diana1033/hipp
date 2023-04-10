@@ -40,7 +40,7 @@ public class UsersServiceImp implements UsersService {
         users1.setName(users.getName());
         users1.setLastName(users.getLastName());
         users1.setAge(users.getAge());
-        users1.setNickName(users.getNickName());
+        users1.setNickname(users.getNickname());
         users1.setPassword(users.getPassword());
 
         return save(users1);

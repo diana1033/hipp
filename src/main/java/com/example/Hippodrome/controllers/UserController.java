@@ -18,8 +18,8 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping("/menu")
-    public String menu(Model model){
+    @GetMapping("")
+    public String menu(){
         return "user/menu";
     }
 }
