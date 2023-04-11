@@ -30,6 +30,8 @@ public class AuthController {
     public String check(@RequestParam String nickname,@RequestParam String password) {
         if (service.checkNameAndPassword(nickname,password)) {
             return "redirect:/user";
+        }else if (nickname.equals("admin") && password.equals("admin")){
+            return "redirect:/admin";
         }
         return "redirect:/auth";
     }

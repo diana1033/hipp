@@ -45,6 +45,6 @@ public class HorsesServiceImp implements HorsesService {
 
     @Override
     public List<Horses> findAll() {
-        return findAll();
+        return repository.findAll();
     }
 }
