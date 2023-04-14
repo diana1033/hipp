@@ -18,5 +18,7 @@ public class Horses {
 
     String name, description;
 
+    @ManyToOne
+    Race race;
 
 }

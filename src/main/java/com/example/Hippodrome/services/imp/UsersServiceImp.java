@@ -12,6 +12,7 @@ import java.util.List;
 public class UsersServiceImp implements UsersService {
 
     private UsersRepository repository;
+    private Users users;
 
     @Autowired
     public UsersServiceImp(UsersRepository repository) {
@@ -53,6 +54,12 @@ public class UsersServiceImp implements UsersService {
 
     @Override
     public boolean checkNameAndPassword(String nickName, String password) {
+        users = repository.findUsersByNicknameAndPassword(nickName,password);
         return repository.findUsersByNickName(nickName,password);
+    }
+
+    @Override
+    public Users getUser() {
+        return this.users;
     }
 }

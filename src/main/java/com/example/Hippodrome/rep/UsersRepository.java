@@ -10,4 +10,6 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
             "from users as u\n" +
             "WHERE u.nickname=:nickName AND u.password=:password", nativeQuery = true)
     boolean findUsersByNickName(String nickName,String password);
+
+    Users findUsersByNicknameAndPassword(String nickName,String password);
 }

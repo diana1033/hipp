@@ -11,21 +11,20 @@
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Horse Name</th>
-            <th scope="col">Description</th>
+            <th scope="col">Race date</th>
             <th scope="col" th:if="${user == null}">Action</th>
         </tr>
         </thead>
-        <tbody th:each="horse : ${horses}">
+        <tbody th:each="race : ${races}">
         <tr>
-            <th scope="row"><a th:text="${horse.getId()}">id</a></th>
-            <td><a th:text="${horse.getName()}">firstName</a></td>
-            <td><a th:text="${horse.getDescription()}">firstName</a></td>
+            <th scope="row"><a th:text="${race.getId()}">id</a></th>
+            <td><a th:text="${race.getRaceTime()}">firstName</a></td>
             <td th:if="${user == null}">
                 <div style="display: flex">
-                    <a th:href="@{/admin/{id}/edit(id=${horse.getId()})}">Edit</a>
-
-                    <form style="margin-left: 5px" th:method="DELETE" th:action="@{/admin/{id}(id=${horse.getId()})}">
+                    <form th:method="PUT" th:action="@{/admin/start/{id}(id=${race.getId()})}" th:object="${horse}">
+                        <input type="submit" value="Start race">
+                    </form>
+                    <form style="margin-left: 5px" th:method="DELETE" th:action="@{/admin/{id}/delete(id=${race.getId()})}">
                         <input type="submit" value="Delete">
                     </form>
                 </div>
@@ -33,8 +32,6 @@
         </tr>
         </tbody>
     </table>
-    <a href="/user">Back</a>
 </center>
-
 </body>
 </html>
