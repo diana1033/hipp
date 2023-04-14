@@ -41,6 +41,19 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Race findRaceById(Long id) {
+        return raceService.findById(id);
+    }
+
+    @Override
+    public void addHorseToRace(Long idHorse, Long idRace) {
+        Horses horses = service.findById(idHorse);
+        horses.setRace(raceService.findById(idRace));
+        service.save(horses);
+    }
+
+
+    @Override
     public List<Horses> getAll() {
         return service.findAll();
     }

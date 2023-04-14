@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<center>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Horse Name</th>
+      <th scope="col">Description</th>
+      <th scope="col" th:if="${user == null}">Action</th>
+    </tr>
+    </thead>
+    <tbody th:each="horse : ${horses}">
+    <tr>
+      <th scope="row"><a th:text="${horse.getId()}">id</a></th>
+      <td><a th:text="${horse.getName()}">firstName</a></td>
+      <td><a th:text="${horse.getDescription()}">firstName</a></td>
+      <td th:if="${user == null}">
+        <div style="display: flex">
+          <form style="margin-left: 5px" th:method="POST" th:action="@{/admin/addToRace/{idHorse}(idHorse=${horse.getId()})}">
+            <input type="submit" value="Add">
+          </form>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/user">Back</a>
+</center>
+
+</body>
+</html>

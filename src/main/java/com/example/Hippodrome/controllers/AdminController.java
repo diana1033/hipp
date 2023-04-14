@@ -3,11 +3,11 @@ package com.example.Hippodrome.controllers;
 import com.example.Hippodrome.entities.Horses;
 import com.example.Hippodrome.entities.Race;
 import com.example.Hippodrome.services.AdminService;
+import com.example.Hippodrome.services.RaceService;
 import com.example.Hippodrome.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -16,11 +16,13 @@ public class AdminController {
 
     private final AdminService service;
     private final UsersService usersService;
+    private final RaceService raceService;
 
     @Autowired
-    public AdminController(AdminService service, UsersService usersService) {
+    public AdminController(AdminService service, UsersService usersService, RaceService raceService) {
         this.service = service;
         this.usersService = usersService;
+        this.raceService = raceService;
     }
 
     @GetMapping
@@ -70,6 +72,20 @@ public class AdminController {
     @PutMapping("/start/{id}")
     public String startRace(@PathVariable("id") Long id) {
         service.startRace(id);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/{id}/addHorse")
+    public String addHorse(Model model, @PathVariable("id") Long id) {
+        raceService.setRace(id);
+        model.addAttribute("race", service.findRaceById(id))
+                .addAttribute("horses", service.getAll());
+        return "race/addHorseToRace";
+    }
+
+    @PostMapping(   "/addToRace/{idHorse}")
+    public String addToRace(@PathVariable("idHorse") Long idHorse) {
+        service.addHorseToRace(idHorse, raceService.getRace().getId());
         return "redirect:/admin";
     }
 }

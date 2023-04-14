@@ -13,4 +13,7 @@ public interface AdminService {
     void createRace(Race race);
     List<Race> getAllRace();
     void startRace(Long id);
+    Race findRaceById(Long id);
+    void addHorseToRace(Long idHorse, Long idRace);
+
 }

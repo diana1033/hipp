@@ -27,6 +27,7 @@
                     <form style="margin-left: 5px" th:method="DELETE" th:action="@{/admin/{id}/delete(id=${race.getId()})}">
                         <input type="submit" value="Delete">
                     </form>
+                    <a th:href="@{/admin/{id}/addHorse(id=${race.getId()})}">Add horse to this race</a>
                 </div>
             </td>
         </tr>
