@@ -13,7 +13,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-
 public class Users {
 
     @Id
@@ -24,8 +23,6 @@ public class Users {
 
     int age;
 
-
-
-
+    double balance;
 
 }

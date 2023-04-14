@@ -39,6 +39,7 @@ public class HorsesServiceImp implements HorsesService {
 
         horses1.setName(horses.getName());
         horses1.setDescription(horses.getDescription());
+        horses1.setRace(horses.getRace());
 
         return save(horses1);
     }
