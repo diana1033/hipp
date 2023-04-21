@@ -11,9 +11,6 @@ Write a program for accepting bets and calculating winnings on horse races. User
 
 - [@Diana](https://github.com/diana1033)
 
-- [@Chingiz](https://github.com/Operans)
-
-
 
 
 ## Features
